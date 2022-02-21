@@ -14,7 +14,6 @@ using namespace std;
 #include "calculations.h"
 #include "tests.h"
 #include "calculator.h"
-//TODO:  Дописать тесты и обработать крайние случаи
 /*
 void reverse(char str[], int length) {
     int start = 0;
