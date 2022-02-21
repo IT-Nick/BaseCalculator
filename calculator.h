@@ -177,6 +177,7 @@ void Calculator(const Converter& c, const RequestType& request_type, const strin
             }
             int x = c.ConvertInput(sx);
             int y = c.ConvertInput(sy);
+            if(x >= y) throw runtime_error("Invalid arguments! Enter only x > y");
             int randResult = x + rand() % y;
             int ran = rand();
             cout << c.Convert(randResult) << endl;
