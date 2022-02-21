@@ -20,7 +20,7 @@ public:
             ss << number;
         }
         if(system != 10) {
-            if(system < 2 || system > 36) throw runtime_error("Invalid base! Enter only 2 >= base <= 36");
+            if(system < 2 || system > 36) throw runtime_error("\nInvalid base! Enter only 2 >= base <= 36");
             ss << (string)itoa(number, buffer, system); //2 - 36;
         } else {
             result = to_string(number);
@@ -32,7 +32,7 @@ public:
     int ConvertInput(const string& number) const {
         char *endptr;
         const char *cstr = number.c_str();
-        if(system < 2 || system > 36) throw runtime_error("Invalid base! Enter only 2 >= base <= 36");
+        if(system < 2 || system > 36) throw runtime_error("\nInvalid base! Enter only 2 >= base <= 36");
         return (int)strtol(cstr, &endptr, isystem);
     }
 private:

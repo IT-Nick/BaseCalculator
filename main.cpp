@@ -5,6 +5,8 @@
 #include <vector>
 #include <cassert>
 #include <exception>
+#include <ctime>
+
 using namespace std;
 
 #include "converter.h"

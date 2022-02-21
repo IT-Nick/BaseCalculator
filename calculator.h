@@ -167,6 +167,8 @@ void Calculator(const Converter& c, const RequestType& request_type, const strin
         }
         case RequestType::RAND: {
             string sx, sy;
+            //для инициализации ГСЧ значением текущего времени
+            srand(time(0));
             if(value.empty()) {
                 cout << "Enter the expression. Example 10 100" << endl;
                 cin >> sx >> sy;
@@ -178,8 +180,7 @@ void Calculator(const Converter& c, const RequestType& request_type, const strin
             int x = c.ConvertInput(sx);
             int y = c.ConvertInput(sy);
             if(x >= y) throw runtime_error("Invalid arguments! Enter only x > y");
-            int randResult = x + rand() % y;
-            int ran = rand();
+            int randResult = x + rand() % (y - x + 1);
             cout << c.Convert(randResult) << endl;
             saver.SetSave(c.Convert(randResult));
             break;
