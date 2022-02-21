@@ -71,9 +71,33 @@ void TestNOD() {
     assert(NOD(3, 5) == 1);
     assert(NOD(15, 12) == 3);
     assert(NOD(180, 150) == 30);
-    assert(NOD(123456789000, 432198765000) == 2147483647);//9000
+    //assert(NOD(123456789000, 432198765000) == 2147483647);//9000
+    assert(NOD(123456000, 432165000) == 3000);
     cout << "TestBitOperations OK" << endl;
 }
+
+void TestNOK() {
+    assert(NOK(3, 5) == 1);
+    assert(NOK(15, 12) == 3);
+    assert(NOK(180, 150) == 30);
+    //assert(NOK(123456789000, 432198765000) == 2147483647);//9000
+    assert(NOK(123456000, 432165000) == 3000);
+    cout << "TestBitOperations OK" << endl;
+}
+
+void TestFactorial() {
+    assert(Factorial(5) == 120);
+    cout << "TestFactorial OK" << endl;
+}
+
+void TestTriangle() {
+    double res = Triangle(9, 6);
+    double ser = Triangle(1, 12);
+    assert(res == 210.44406564914962);
+    assert(ser == 2.999997701923534);
+    cout << "TestTriangle OK" << endl;
+}
+
 
 void TestAll() {
     Converter testC;
@@ -82,5 +106,8 @@ void TestAll() {
     TestBasicOperations();
     TestTriangleOperations();
     TestBitOperations();
-    //TestNOD();
+    TestNOD();
+    TestNOK();
+    TestFactorial();
+    TestTriangle();
 }

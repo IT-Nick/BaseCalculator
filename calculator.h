@@ -63,7 +63,7 @@ void Calculator(const Converter& c, const RequestType& request_type, const strin
             }
             int x = c.ConvertInput(sx);
             int y = c.ConvertInput(sy);
-            double bitResult = BitOperations(x, y, o);
+            int bitResult = BitOperations(x, y, o);
             cout << c.Convert(bitResult) << endl;
             saver.SetSave(c.Convert(bitResult));
 

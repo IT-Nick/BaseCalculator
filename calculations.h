@@ -10,6 +10,7 @@ int BasicOperations(const int& a, const char& o, const int& b) {
         result = a * b;
     }
     if (o == '/') {
+        if(b == 0) throw runtime_error("Division by zero");
         result = a / b;
     }
     return result;

@@ -4,6 +4,7 @@
 #include <cstdlib>
 #include <vector>
 #include <cassert>
+#include <exception>
 using namespace std;
 
 #include "converter.h"
@@ -66,7 +67,7 @@ void Interface(RequestConsole& request_t, Converter& c, Saver& s, const string& 
     if(request_num >=0 && request_num < 6) {
         request_t = static_cast<RequestConsole>(request_num);
     } else {
-        cout <<  "Wrong! Enter the number from 0 to 5!" << endl;
+        cerr <<  "Wrong! Enter the number from 0 to 5!" << endl;
         return;
     }
     switch (request_t) {
@@ -84,9 +85,11 @@ void Interface(RequestConsole& request_t, Converter& c, Saver& s, const string& 
             cout << "What system do you want to input?\n example: 16 10 8 2 ..." << endl;
             int isystem;
             cin >> isystem;
+            if(isystem < 2 || isystem > 36) throw runtime_error("Enter only: 2 <= base =< 36");
             cout << "What system do you want to output?\n example: 16 10 8 2 ..." << endl;
             int osystem;
             cin >> osystem;
+            if(osystem < 2 || osystem > 36) throw runtime_error("Enter only: 2 <= base =< 36");
             c.SetO(osystem);
             c.SetI(isystem);
             cout << "OK" << endl;
@@ -100,7 +103,7 @@ void Interface(RequestConsole& request_t, Converter& c, Saver& s, const string& 
                 cout << s.GetSave(choice) << endl;
                 value = s.GetSave(choice);
             } else {
-                cout << "You have 0, 1, 2, 3 storages" << endl;
+                throw runtime_error("You have 0, 1, 2, 3 storages");
             }
             cout << "OK" << endl;
             break;
@@ -113,7 +116,7 @@ void Interface(RequestConsole& request_t, Converter& c, Saver& s, const string& 
             if(choice <= 3) {
                 s.Insert(choice);
             } else {
-                cout << "You have 0, 1, 2, 3 storages" << endl;
+                throw runtime_error("You have 0, 1, 2, 3 storages");
             }
             cout << "OK" << endl;
             break;
@@ -127,12 +130,18 @@ void Interface(RequestConsole& request_t, Converter& c, Saver& s, const string& 
             cout << "From:" << endl;
             int from;
             cin >> from;
+            if(from < 2 || from > 36) throw runtime_error("Invalid base! Enter only 2 >= base <= 36");
             cout << "To:" << endl;
             int to;
             cin >> to;
-            cout << "Number:" << endl;
+            if(to < 2 || to > 36) throw runtime_error("Invalid base! Enter only 2 >= base <= 36");
             string number;
-            cin >> number;
+            if(value.empty()) {
+                cout << "Number:" << endl;
+                cin >> number;
+            } else {
+                number = value;
+            }
             //From
             char *endptr;
             const char *cstr = number.c_str();
@@ -157,13 +166,20 @@ int main() {
     string select;
     string saved;
     string value;
-
     cout << "How many commands do you want?" << endl;
     int count_of_calcs = 0;
     cin >> count_of_calcs;
-    while(count_of_calcs > 0) {
-        Interface(request_t, c, s, select, saved, value);
-        count_of_calcs--;
+    if(count_of_calcs <= 0) {
+        cerr << "Enter a number > 0!" << endl;
+        cin >> count_of_calcs;
+    }
+    while (count_of_calcs > 0) {
+        try {
+            Interface(request_t, c, s, select, saved, value);
+            count_of_calcs--;
+        } catch (exception& e) {
+            cerr << e.what() << endl;
+        }
     }
     return 0;
 }

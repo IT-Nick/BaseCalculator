@@ -16,10 +16,11 @@ public:
         string result;
         stringstream ss;
         if(system != 10 && number <= 0){
-            cout << "This CC does not display numbers after the decimal point" << endl;
+            cerr << "This CC does not display numbers after the decimal point" << endl;
             ss << number;
         }
         if(system != 10) {
+            if(system < 2 || system > 36) throw runtime_error("Invalid base! Enter only 2 >= base <= 36");
             ss << (string)itoa(number, buffer, system); //2 - 36;
         } else {
             result = to_string(number);
@@ -31,6 +32,7 @@ public:
     int ConvertInput(const string& number) const {
         char *endptr;
         const char *cstr = number.c_str();
+        if(system < 2 || system > 36) throw runtime_error("Invalid base! Enter only 2 >= base <= 36");
         return (int)strtol(cstr, &endptr, isystem);
     }
 private:
