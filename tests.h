@@ -28,7 +28,7 @@ void TestConvertInput(Converter c) {
     assert(c.ConvertInput("111110202") == 9821);
     c.SetI(12);
     assert(c.ConvertInput("162a9") == 31521);
-    cout << "TestConvertInput OK" << sin(60) << " " << cos(60) << endl;
+    cout << "TestConvertInput OK" << endl;
 }
 
 void TestBasicOperations() {
@@ -67,6 +67,14 @@ void TestBitOperations() {
     cout << "TestBitOperations OK" << endl;
 }
 
+void TestNOD() {
+    assert(NOD(3, 5) == 1);
+    assert(NOD(15, 12) == 3);
+    assert(NOD(180, 150) == 30);
+    assert(NOD(123456789000, 432198765000) == 2147483647);//9000
+    cout << "TestBitOperations OK" << endl;
+}
+
 void TestAll() {
     Converter testC;
     TestConvert(testC);
@@ -74,4 +82,5 @@ void TestAll() {
     TestBasicOperations();
     TestTriangleOperations();
     TestBitOperations();
+    //TestNOD();
 }
