@@ -14,5 +14,5 @@ public:
     }
 private:
     string saveLastExpression;
-    vector<string> v = {"nothing1", "nothing2", "nothing3", "nothing4"};
+    deque<string> v = {"nothing1", "nothing2", "nothing3", "nothing4"};
 };

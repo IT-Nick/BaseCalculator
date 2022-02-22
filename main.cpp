@@ -2,7 +2,7 @@
 #include <cmath>
 #include <sstream>
 #include <cstdlib>
-#include <vector>
+#include <deque>
 #include <cassert>
 #include <exception>
 #include <ctime>
