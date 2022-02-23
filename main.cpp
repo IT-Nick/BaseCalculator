@@ -79,7 +79,6 @@ void Interface(RequestConsole& request_t, Converter& c, Saver& s, const string& 
             cin >> request_code;
             auto request = static_cast<RequestType>(request_code);
             Calculator(c, request, value, s);
-            cout << "OK" << endl;
             break;
         }
         case RequestConsole::SETBASE: {
@@ -93,7 +92,6 @@ void Interface(RequestConsole& request_t, Converter& c, Saver& s, const string& 
             if(osystem < 2 || osystem > 36) throw runtime_error("Enter only: 2 <= base =< 36");
             c.SetO(osystem);
             c.SetI(isystem);
-            cout << "OK" << endl;
             break;
         }
         case RequestConsole::SELECT: {
@@ -106,7 +104,6 @@ void Interface(RequestConsole& request_t, Converter& c, Saver& s, const string& 
             } else {
                 throw runtime_error("You have 0, 1, 2, 3 storages");
             }
-            cout << "OK" << endl;
             break;
         }
         case RequestConsole::SAVE: {
@@ -119,7 +116,6 @@ void Interface(RequestConsole& request_t, Converter& c, Saver& s, const string& 
             } else {
                 throw runtime_error("You have 0, 1, 2, 3 storages");
             }
-            cout << "OK" << endl;
             break;
         }
         case RequestConsole::DETACHSAVEDVALUE: {

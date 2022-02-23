@@ -98,7 +98,6 @@ void TestTriangle() {
     cout << "TestTriangle OK" << endl;
 }
 
-
 void TestAll() {
     Converter testC;
     TestConvert(testC);

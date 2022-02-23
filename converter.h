@@ -28,7 +28,7 @@ public:
         ss >> result;
         return result;
     }
-    //вводные данные только int
+    //входные данные только int
     int ConvertInput(const string& number) const {
         char *endptr;
         const char *cstr = number.c_str();
